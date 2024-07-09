@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Resume Keyword Matcher</title>
+    <link rel="stylesheet" href={{ url_for('static', filename='styles.css') }}>
+</head>
+<body>
+    <div class="container">
+    <h1>Resume Keyword Matcher</h1>
+    <form action="/" method="post" enctype="multipart/form-data">
+        <div>
+            <label for="resume">Upload your resume (PDF):</label>
+            <input type="file" id="resume" name="resume">
+        </div>
+        <div>
+            <label for="job_keywords">Enter job keywords (comma-separated):</label>
+            <textarea id="job_keywords" name="job_keywords">software, developer, Python, web development</textarea>
+        </div>
+        <div>
+            <button type="submit">Check for Matched Keywords</button>
+        </div>
+    </form>
+    {% if matched_keywords is not none %}
+        <h2>Matched Keywords:</h2>
+        {% if matched_keywords %}
+            <p>{{ matched_keywords }}</p>
+        {% else %}
+            <p>No matching keywords found in the resume.</p>
+        {% endif %}
+    {% endif %}
+</div>
+</body>
+</html>
